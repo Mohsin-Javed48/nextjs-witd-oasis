@@ -1,5 +1,9 @@
 import React from "react";
-import Navigation from "../_components/navigation";
+import Navigation from "../_components/Navigation";
+
+export const metadata = {
+  title: "Contact us",
+};
 
 const page: React.FC = () => {
   return (

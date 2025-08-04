@@ -1,7 +1,7 @@
 "use client";
 
 import React from "react";
-import Navigation from "../_components/navigation";
+import Navigation from "../_components/Navigation";
 
 const page: React.FC = () => {
   return (
