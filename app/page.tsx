@@ -12,8 +12,9 @@ const Home: React.FC = () => {
       <Image
         src={bg}
         fill
-        className="object-cover"
+        className="object-cover object-top"
         alt="Mountains and forests with two cabins"
+        placeholder="blur"
       />
 
       <div className="relative z-10 text-center">
