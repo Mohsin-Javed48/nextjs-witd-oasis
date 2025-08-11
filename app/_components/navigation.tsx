@@ -22,7 +22,7 @@ const Navigation: React.FC = () => {
         </li>
         <li>
           <Link
-            href="/contact"
+            href="/account"
             className="hover:text-accent-400 transition-colors"
           >
             Guest area

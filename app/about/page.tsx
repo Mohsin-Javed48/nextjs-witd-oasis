@@ -1,4 +1,6 @@
 import Image from "next/image";
+import image1 from "@/public/about-1.jpg";
+import image2 from "@/public/about-2.jpg";
 
 const page: React.FC = () => {
   return (
@@ -31,14 +33,19 @@ const page: React.FC = () => {
       </div>
 
       <div className="col-span-2">
-        <img
-          src="/about-1.jpg"
+        <Image
+          src={image1}
           alt="Family sitting around a fire pit in front of cabin"
+          placeholder="blur"
         />
       </div>
 
-      <div className="col-span-2">
-        <img src="/about-2.jpg" alt="Family that manages The Wild Oasis" />
+      <div className="col-span-2 relative aspect-square">
+        <Image
+          src="/about-2.jpg"
+          alt="Family that manages The Wild Oasis"
+          fill
+        />
       </div>
 
       <div className="col-span-3">

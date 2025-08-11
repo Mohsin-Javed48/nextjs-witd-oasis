@@ -1,0 +1,23 @@
+//  <div className="col-span-2">
+        <Image
+          src={image1}
+          alt="Family sitting around a fire pit in front of cabin"
+          placeholder="blur"
+        />
+      </div>
+
+      <div className="col-span-2 relative aspect-square">
+        <Image
+          src="/about-2.jpg"
+          alt="Family that manages The Wild Oasis"
+          fill
+        />
+      </div>
+
+
+      placeholder=blur cannot use with src={image1} statically define image1
+      quality={80} can only use the dynamically imported path
+
+
+
+      'one dark pro night flat' for night
