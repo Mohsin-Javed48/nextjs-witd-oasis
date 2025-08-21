@@ -11,7 +11,7 @@ const josefin = Josefin_Sans({
   display: "swap",
 });
 
-console.log(josefin);
+
 // const geistSans = localFont({
 //   src: "./fonts/GeistVF.woff",
 //   variable: "--font-geist-sans",

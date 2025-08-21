@@ -1,8 +1,8 @@
 import React from "react";
+import Spinner from "@/app/_components/Spinner";
 
 const loading: React.FC = () => {
-  return <div className="p-4 border rounded shadow-md">loading........</div>;
+  return <Spinner />;
 };
 
 export default loading;
- 
