@@ -35,11 +35,14 @@ export async function generateStaticParams() {
   return ids;
 }
 
+export const revalidate = 10;
+
 export default async function page({ params }: PageProps) {
   const cabin = await getCabin(params.cabinId);
 
   const { id, name, maxCapacity, regularPrice, discount, image, description } =
     cabin;
+  console.log(description);
 
   return (
     <div className="max-w-6xl mx-auto mt-8">

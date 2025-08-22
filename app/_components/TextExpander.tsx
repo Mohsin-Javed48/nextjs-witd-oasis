@@ -8,12 +8,13 @@ interface TextExpanderProps {
 
 function TextExpander({ children }: TextExpanderProps) {
   const [isExpanded, setIsExpanded] = useState(false);
+  console.log(children);
 
   const safeText = children ?? "";
   const displayText = isExpanded
     ? safeText
     : safeText.split(" ").slice(0, 40).join(" ") + "...";
-
+  console.log(displayText);
   return (
     <span>
       {displayText}{" "}
