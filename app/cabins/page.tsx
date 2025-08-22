@@ -2,6 +2,7 @@ import React, { Suspense } from "react";
 import Counter from "../_components/Counter";
 import CabinList from "@/app/_components/CabinList";
 import Spinner from "../_components/Spinner";
+import Filter from "../_components/FIlter";
 
 export const revalidate = 0;
 
@@ -9,7 +10,12 @@ export const metadata = {
   title: "Cabins page",
 };
 
-const page: React.FC = () => {
+interface paramProp {
+  searchParams: { [key: string]: string };
+}
+export default function page({ searchParams }: paramProp) {
+  const filter = searchParams?.capacity ?? "all";
+
   return (
     <div>
       <h1 className="text-4xl mb-5 text-accent-400 font-medium">
@@ -23,11 +29,14 @@ const page: React.FC = () => {
         away from home. The perfect spot for a peaceful, calm vacation. Welcome
         to paradise.
       </p>
-      <Suspense fallback={<Spinner />}>
-        <CabinList />
+
+      <div className="flex justify-end mb-8">
+        <Filter />
+      </div>
+
+      <Suspense fallback={<Spinner />} key={filter}>
+        <CabinList filter={filter} />
       </Suspense>
     </div>
   );
-};
-
-export default page;
+}
