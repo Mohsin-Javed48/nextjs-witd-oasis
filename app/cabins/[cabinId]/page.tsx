@@ -1,6 +1,11 @@
+import Reservation from "@/app/_components/Reservation";
 import TextExpander from "@/app/_components/TextExpander";
-import { getCabin, getCabins } from "@/app/_lib/data-service";
-import Page from "@/app/account/profile/page";
+import {
+  getBookedDatesByCabinId,
+  getCabin,
+  getCabins,
+  getSettings,
+} from "@/app/_lib/data-service";
 import { EyeSlashIcon, MapPinIcon, UsersIcon } from "@heroicons/react/24/solid";
 
 interface PageProps {
@@ -39,7 +44,6 @@ export const revalidate = 10;
 
 export default async function page({ params }: PageProps) {
   const cabin = await getCabin(params.cabinId);
-
   const { id, name, maxCapacity, regularPrice, discount, image, description } =
     cabin;
   console.log(description);
@@ -86,9 +90,13 @@ export default async function page({ params }: PageProps) {
       </div>
 
       <div>
-        <h2 className="text-5xl font-semibold text-center">
-          Reserve today. Pay on arrival.
+        <h2 className="text-5xl font-semibold text-center text-accent-500">
+          Reserve {name} today. Pay on arrival.
         </h2>
+        <div>
+          {" "}
+          <Reservation />
+        </div>
       </div>
     </div>
   );
