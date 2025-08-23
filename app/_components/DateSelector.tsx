@@ -5,12 +5,24 @@ import "react-day-picker/dist/style.css";
 import { DateRange } from "react-day-picker";
 import { useState } from "react";
 
-interface DateSelectorProps {
+interface Settings {
+  minBookingLength: number;
+  maxBookingLength: number;
+}
+
+interface Cabin {
+  id: number;
+  name: string;
+  maxCapacity: number;
   regularPrice: number;
   discount: number;
-  bookedDates?: Date[]; // Dates already booked
-  minBookingLength?: number;
-  maxBookingLength?: number;
+  image: string;
+  description: string;
+}
+interface DateSelectorProps {
+  settings: Settings;
+  cabin: Cabin;
+  bookedDates: Date[];
 }
 
 function isAlreadyBooked(range: DateRange, datesArr: Date[]) {
@@ -23,24 +35,20 @@ function isAlreadyBooked(range: DateRange, datesArr: Date[]) {
   );
 }
 
-function DateSelector() {
+function DateSelector({ settings, bookedDates, cabin }: DateSelectorProps) {
+  const [range, setRange] = useState<DateRange | undefined>(undefined);
   // CHANGE
   const regularPrice = 23;
   const discount = 23;
   const numNights = 23;
   const cabinPrice = 23;
-  const [range, setRange] = useState<DateRange>({
-    from: undefined,
-    to: undefined,
-  });
 
   // SETTINGS
-  const minBookingLength = 1;
-  const maxBookingLength = 23;
+  const { minBookingLength, maxBookingLength } = settings;
 
   // ✅ Define the reset function
   function resetRange() {
-    setRange({ from: undefined, to: undefined });
+    setRange(undefined);
   }
 
   return (
@@ -48,6 +56,8 @@ function DateSelector() {
       <DayPicker
         className="pt-12 place-self-center"
         mode="range"
+        onSelect={(range) => setRange(range)}
+        selected={range}
         min={minBookingLength + 1}
         max={maxBookingLength}
         fromMonth={new Date()}
@@ -85,7 +95,7 @@ function DateSelector() {
           ) : null}
         </div>
 
-        {range.from || range.to ? (
+        {range?.from || range?.to ? (
           <button
             className="border border-primary-800 py-2 px-4 text-sm font-semibold"
             onClick={() => resetRange()}
