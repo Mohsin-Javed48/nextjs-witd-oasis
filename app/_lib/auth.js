@@ -8,6 +8,11 @@ const authConfig = {
       clientSecret: process.env.AUTH_CLIENT_SECRET,
     }),
   ],
+  callback: {
+    authorized: ({ auth, request }) => {
+      return !!auth?.user;
+    },
+  },
 };
 
 export const { handlers, auth, signIn, signOut } = NextAuth(authConfig);

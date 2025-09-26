@@ -11,11 +11,17 @@ interface CabinProp {
   description: string;
 }
 
-interface Cabin {
-  cabin: CabinProp;
+interface User {
+  image: string;
+  name: string;
 }
 
-function ReservationForm({ cabin }: Cabin) {
+interface Cabin {
+  cabin: CabinProp;
+  user: User;
+}
+
+function ReservationForm({ cabin, user }: Cabin) {
   const { range } = useReservation();
   // CHANGE
   const { maxCapacity } = cabin;
@@ -29,16 +35,16 @@ function ReservationForm({ cabin }: Cabin) {
           {range?.to?.toDateString()}
         </p>
 
-        {/* <div className='flex gap-4 items-center'>
+        <div className="flex gap-4 items-center">
           <img
             // Important to display google profile images
-            referrerPolicy='no-referrer'
-            className='h-8 rounded-full'
+            referrerPolicy="no-referrer"
+            className="h-8 rounded-full"
             src={user.image}
             alt={user.name}
           />
           <p>{user.name}</p>
-        </div> */}
+        </div>
       </div>
 
       <form className="bg-primary-900 py-10 px-16 text-lg flex gap-5 flex-col">
