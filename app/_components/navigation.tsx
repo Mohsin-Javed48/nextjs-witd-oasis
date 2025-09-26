@@ -1,6 +1,9 @@
 import Link from "next/link";
+import { auth } from "../_lib/auth";
 
-const Navigation: React.FC = () => {
+const Navigation: React.FC = async () => {
+  const session = await auth();
+  console.log(session);
   return (
     <nav className="z-10 text-xl">
       <ul className="flex gap-16 items-center">
@@ -18,15 +21,30 @@ const Navigation: React.FC = () => {
             className="hover:text-accent-400 transition-colors"
           >
             About
-          </Link>
+          </Link> 
         </li>
         <li>
-          <Link
-            href="/account"
-            className="hover:text-accent-400 transition-colors"
-          >
-            Guest area
-          </Link>
+          {session?.user?.image ? (
+            <Link
+              href="/account"
+              className="hover:text-accent-400 transition-colors"
+            >
+              <img
+                className="w-10 h-10 rounded-full"
+                src={session?.user?.image}
+                alt={session?.user?.name || ""}
+                refferPolicy="no-referrer"
+              />
+              <span>Guest Area</span>
+            </Link>
+          ) : (
+            <Link
+              href="/account"
+              className="hover:text-accent-400 transition-colors"
+            >
+              Guest area
+            </Link>
+          )}
         </li>
       </ul>
     </nav>

@@ -3,6 +3,7 @@ import Counter from "../_components/Counter";
 import CabinList from "@/app/_components/CabinList";
 import Spinner from "../_components/Spinner";
 import Filter from "../_components/FIlter";
+import ReservationReminder from "../_components/ReservationReminder";
 
 export const revalidate = 0;
 
@@ -36,6 +37,7 @@ export default function page({ searchParams }: paramProp) {
 
       <Suspense fallback={<Spinner />} key={filter}>
         <CabinList filter={filter} />
+        <ReservationReminder />
       </Suspense>
     </div>
   );

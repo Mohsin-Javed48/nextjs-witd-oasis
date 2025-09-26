@@ -5,12 +5,13 @@ import "@/app/_styles/globals.css";
 import Logo from "@/app/_components/Logo";
 import { Josefin_Sans } from "next/font/google";
 import Header from "@/app/_components/Header";
+import ReservationCard from "./_components/ReservationCard";
+import { ReservationContextProvider } from "./_components/ReservationContext";
 
 const josefin = Josefin_Sans({
   subsets: ["latin"],
   display: "swap",
 });
-
 
 // const geistSans = localFont({
 //   src: "./fonts/GeistVF.woff",
@@ -47,7 +48,9 @@ export default function RootLayout({
         <Header />
         <div className="flex-1 px-8 py-12 ">
           {" "}
-          <main className="max-w-7xl mx-auto ">{children}</main>
+          <main className="max-w-7xl mx-auto ">
+            <ReservationContextProvider>{children}</ReservationContextProvider>
+          </main>
         </div>
       </body>
     </html>
