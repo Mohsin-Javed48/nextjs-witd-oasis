@@ -21,19 +21,19 @@ const Navigation: React.FC = async () => {
             className="hover:text-accent-400 transition-colors"
           >
             About
-          </Link> 
+          </Link>
         </li>
         <li>
           {session?.user?.image ? (
             <Link
               href="/account"
-              className="hover:text-accent-400 transition-colors"
+              className="hover:text-accent-400 transition-colors flex items-center gap-2"
             >
               <img
                 className="w-10 h-10 rounded-full"
                 src={session?.user?.image}
                 alt={session?.user?.name || ""}
-                refferPolicy="no-referrer"
+                referrerPolicy="no-referrer"
               />
               <span>Guest Area</span>
             </Link>

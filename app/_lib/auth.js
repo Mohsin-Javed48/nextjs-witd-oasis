@@ -8,8 +8,17 @@ const authConfig = {
       clientSecret: process.env.AUTH_CLIENT_SECRET,
     }),
   ],
-  callback: {
+  pages: {
+    signIn: "/login",
+  },
+  callbacks: {
     authorized: ({ auth, request }) => {
+      console.log(
+        "🔐 Authorized callback - Auth:",
+        !!auth?.user,
+        "Path:",
+        request.nextUrl.pathname
+      );
       return !!auth?.user;
     },
   },
