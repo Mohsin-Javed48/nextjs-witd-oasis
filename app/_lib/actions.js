@@ -9,5 +9,7 @@ export async function signInWithGoogle() {
 }
 
 export async function signOut() {
-  await nextAuthSignOut();
+  await nextAuthSignOut({
+    redirectTo: "/",
+  });
 }
